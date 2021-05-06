@@ -60,8 +60,9 @@ function populateSearchPage(response) {
     }
     var movieData = document.querySelector("#resultsContainer")
     movieData.innerHTML = responseArray.Search.map(function (response) {
-        return " <div class='results2'> <img src=" + response.Poster + " alt='No Poster Found'>" + "<h2>" + response.Title + "</h2>" + "<p class='yearReleased'>" + response.Year + "</p> <button class='button' onclick='trial(event)'>Nominate</button> </div>"
+        return " <div class='results'> <img src=" + response.Poster + " class ='moviePoster' alt='No Poster Found'>" + "<h2 class='movieTitle'>" + response.Title + "</h2>" + "<p class='yearReleased'>" + response.Year + "</p> <button class='nominateButton' onclick='trial(event)'>Nominate</button> </div>"
     }).join("")
+    addIDs()
 
 
 
@@ -85,20 +86,34 @@ function trail(j) {
 }
 
 
-z = 0
+// z = 0
 function trial(event) {
     alert("You nominated me!")
-    event.target.setAttribute("id", z)
-    console.log(event.target)
-    console.log(document.getElementsByClassName("yearReleased")[z])
-    z++
-    console.log(z)
-    var yReleased = document.getElementsByClassName("yearReleased")
+    // event.target.setAttribute("id", z)
+    // console.log(event.target)
+    // TODO: The below line of code shows you how you target the specific element in the array. z could be any number 0-9, and it would give you the corresponding item from the array. It's also what you're doing in the addIDs() function
+    // console.log(document.getElementsByClassName("yearReleased")[z])
+    // z++
+    // console.log(z)
+    // var yearReleased = document.getElementsByClassName("yearReleased")
 
-    $("div:last").after("<div class=item><p>" + "</p></div>")
+    // $("div:last").after("<div class=item><p>" + "</p></div>")
 
+    // for (let p = 0; p < 10; p++) {
+    //     yearReleased[p].setAttribute("id", "p" + p)
+    // }
+}
+
+function addIDs() {
+    var yearReleased = document.getElementsByClassName("yearReleased")
+    var moviePoster = document.getElementsByClassName("moviePoster")
+    var nominateButton = document.getElementsByClassName("nominateButton")
+    var movieTitle = document.getElementsByClassName("movieTitle")
     for (let p = 0; p < 10; p++) {
-        yReleased[p].setAttribute("id", "p" + p)
+        yearReleased[p].setAttribute("id", "p" + p);
+        moviePoster[p].setAttribute("id", "img" + p);
+        nominateButton[p].setAttribute("id", "btn" + p);
+        movieTitle[p].setAttribute("id", "title" + p)
     }
 }
 // With the above function you've shown that you can create a unique id for each element that you create when you map. You would just have to set the id for each class name of each element. See if you can do this when you click the search button, instead of when you click the nominate button. You would have to call this function after you run the map function though, since if you called it before there wouldn't be any elements to add IDs to

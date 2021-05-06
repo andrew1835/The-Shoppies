@@ -9,7 +9,7 @@
     text-align: center;
 }
 
-#results{
+/* #results{
     height: fit-content;
     width: 90vw;
     background-color: rgb(109, 109, 109);
@@ -19,12 +19,12 @@
     margin-top: 2vh;
     margin-bottom: 2vh;
     padding: 2%;
-}
+} */
 
-.image{
+/* .image{
     width: 10vw;
     height: 10vw;
-}
+} */
 
 #resultsContainer{
     width: 100%;
@@ -34,7 +34,7 @@
     margin-top: 2vh;
 }
 
-.results2{
+.results{
     height: fit-content;
     width: 30%;
     background-color: rgb(109, 109, 109);
@@ -47,9 +47,12 @@
     padding: 2%;
 }
 
-.button{
+.nominateButton{
     background-color: rgb(12, 201, 12);
     color: white;
     height: 6vh;
     width: 6vw;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
 }
