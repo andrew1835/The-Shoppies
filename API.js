@@ -84,10 +84,21 @@ function trail(j) {
     console.log(j)
 }
 
+
+z = 0
 function trial(event) {
     alert("You nominated me!")
-    console.log(event)
-    console.log(document.getElementsByClassName("yearReleased")[0])
-    $("div:last").after("<div class=item><p>" + "</p></div>")
-}
+    event.target.setAttribute("id", z)
+    console.log(event.target)
+    console.log(document.getElementsByClassName("yearReleased")[z])
+    z++
+    console.log(z)
+    var yReleased = document.getElementsByClassName("yearReleased")
 
+    $("div:last").after("<div class=item><p>" + "</p></div>")
+
+    for (let p = 0; p < 10; p++) {
+        yReleased[p].setAttribute("id", "p" + p)
+    }
+}
+// With the above function you've shown that you can create a unique id for each element that you create when you map. You would just have to set the id for each class name of each element. See if you can do this when you click the search button, instead of when you click the nominate button. You would have to call this function after you run the map function though, since if you called it before there wouldn't be any elements to add IDs to

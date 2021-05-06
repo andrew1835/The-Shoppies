@@ -24,4 +24,6 @@
 // Have to create an if statement where if there if poster === N/A, hide the element
 
 
-// You may not have to have a unique button id. Basically, you can target specific items wtih a button click since each item is in an array. However, you want to target the item that aligns with the button you clicked (you'll have to set a variable equal to whatever that identifier is, and then target the correct item based off that variable). You're looking through the event of clicking the button right now to see if there is a unique identifier for the button click, but if there's not then you'll have to add a unique id to each one. You were originally trying to do this with a for loop, but maybe you can add a unique id on button click
+// You may not have to have a unique button id. Basically, you can target specific items wtih a button click since each item is in an array. However, you want to target the item that aligns with the button you clicked (you'll have to set a variable equal to whatever that identifier is, and then target the correct item based off that variable). You're looking through the event of clicking the button right now to see if there is a unique identifier for the button click, but if there's not then you'll have to add a unique id to each one. You were originally trying to do this with a for loop, but maybe you can add a unique id on button click. 
+
+// You're gonna have to traverse the DOM of the element. It'll basically be something like var x = MouseEvent.target.id
