@@ -15,10 +15,13 @@
 // 7. Some cool style touches to add are lazy loading from top to bottom when you search and when you navigate to your "nominated" page. I don't think lazy loading is the right word, but basically you want the items to show one after the other, with the transition in opacity taking about 0.2 seconds per item. You could also do a light/dark mode toggle. Mobile design
 
 
-// TODO: By the end of the day, you want to be properly connected to the API so that you can search for a movie and get the results
+// TODO: By the end of the day, you want the app to be fully functional. That means being able to nominate (up to 5) movies and un-nominate movies. You also want a page that shows the nominated movies 
 
 
 
 // You want the "nominate" button to save it to an array. You should then call a function where you map over the array and create an li item for each item in the array (just like how that one site you looked at yesterday showed you to do it). This will be for the list on the same page as the home page. For the list on the "Nominated" page, you will create a card for each mapped item. Remember to keep the limit at 5. 
 
 // Have to create an if statement where if there if poster === N/A, hide the element
+
+
+// You may not have to have a unique button id. Basically, you can target specific items wtih a button click since each item is in an array. However, you want to target the item that aligns with the button you clicked (you'll have to set a variable equal to whatever that identifier is, and then target the correct item based off that variable). You're looking through the event of clicking the button right now to see if there is a unique identifier for the button click, but if there's not then you'll have to add a unique id to each one. You were originally trying to do this with a for loop, but maybe you can add a unique id on button click

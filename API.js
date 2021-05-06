@@ -2,6 +2,7 @@
 
 var searchButton = document.getElementById("searchButton")
 
+
 searchButton.onclick = function (event) {
 
 
@@ -35,9 +36,16 @@ searchButton.onclick = function (event) {
 
 function populateSearchPage(response) {
     responseArray = response
+    // var movieData = document.querySelector("#resultsContainer")
+    // movieData.innerHTML = responseArray.Search.map(function (response) {
+    //     return " <div class='results2'> <img src=" + response.Poster + " alt='No Poster Found'>" + "<h2>" + response.Title + "</h2>" + "<p>" + response.Year + "</p> </div>"
+    // }).join("")
+
+
+
+
     for (let i = 0; i < 10; i++) {
         console.log("Title: " + responseArray.Search[i].Title + ". Year: " + responseArray.Search[i].Year)
-        var movieData = document.querySelector("#resultsContainer")
         var image = '<img'
         // console.log(responseArray.Search[i].Type)
         if (responseArray.Search[i].Type === "movie") {
@@ -46,9 +54,40 @@ function populateSearchPage(response) {
         else if (responseArray.Search[i].Type === "series") {
             console.log("123Series")
         }
-        movieData.innerHTML = responseArray.Search.map(function (response) {
-            return " <div class='results2'> <img src=" + response.Poster + ">" + "<h2>" + response.Title + "</h2>" + "<p>" + response.Year + "</p> </div>"
-        }).join("")
         // Have to create an if statement where if there if poster === N/A, hide the element
+
+
     }
+    var movieData = document.querySelector("#resultsContainer")
+    movieData.innerHTML = responseArray.Search.map(function (response) {
+        return " <div class='results2'> <img src=" + response.Poster + " alt='No Poster Found'>" + "<h2>" + response.Title + "</h2>" + "<p class='yearReleased'>" + response.Year + "</p> <button class='button' onclick='trial(event)'>Nominate</button> </div>"
+    }).join("")
+
+
+
+
+
+    // try{throw i}
+    //     catch(ii){
+    //     var movieData = document.querySelector("#resultsContainer")
+    //     movieData.innerHTML = responseArray.Search.map(function (response) {
+    //         return " <div class='results2'> <img src=" + response.Poster + " alt='No Poster Found'>" + "<h2>" + response.Title + "</h2>" + "<p>" + response.Year + "</p> <button class='button' id='button" + ii + "'>Nominate</button> </div>"
+    //     }).join("")}
+
 }
+
+for (let j = 0; j < 10; j++) {
+    trail(j);
+}
+
+function trail(j) {
+    console.log(j)
+}
+
+function trial(event) {
+    alert("You nominated me!")
+    console.log(event)
+    console.log(document.getElementsByClassName("yearReleased")[0])
+    $("div:last").after("<div class=item><p>" + "</p></div>")
+}
+
