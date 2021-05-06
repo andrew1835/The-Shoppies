@@ -12,7 +12,13 @@
 
 // 6. Once all this is working, you style it. At this point, decide if you want to become a patreon to access the poster API from OMDB
 
-// 7. Some cool style touches to add are lazy loading from top to bottom when you search and when you navigate to your "nominated" page. I don't think lazy loading is the right word, but basically you want the items to show one after the other, with the transition in opacity taking about 0.2 seconds per item. 
+// 7. Some cool style touches to add are lazy loading from top to bottom when you search and when you navigate to your "nominated" page. I don't think lazy loading is the right word, but basically you want the items to show one after the other, with the transition in opacity taking about 0.2 seconds per item. You could also do a light/dark mode toggle. Mobile design
 
 
 // TODO: By the end of the day, you want to be properly connected to the API so that you can search for a movie and get the results
+
+
+
+// You want the "nominate" button to save it to an array. You should then call a function where you map over the array and create an li item for each item in the array (just like how that one site you looked at yesterday showed you to do it). This will be for the list on the same page as the home page. For the list on the "Nominated" page, you will create a card for each mapped item. Remember to keep the limit at 5. 
+
+// Have to create an if statement where if there if poster === N/A, hide the element
