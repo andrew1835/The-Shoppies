@@ -101,13 +101,13 @@ body{
 
 #fiveBanner{
     position: fixed;
-    top: 0;
-    right: 0;
+    top: 0%;
+    right: 0%;
     left: 0;
-    background-color: rgba(16, 177, 16, 0.918);
-    width: 60%;
+    background-color: rgba(69, 207, 69, 0.966);
+    width: 50%;
     margin: 0 auto;
-    padding: 0.5%;
+    padding: 3px;
     border-radius: 0px 0px 8px 8px;
     transition: 0.5s;
     opacity: 0;

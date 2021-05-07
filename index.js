@@ -12,7 +12,8 @@
 
 // 6. Once all this is working, you style it. At this point, decide if you want to become a patreon to access the poster API from OMDB
 
-// 7. Some cool style touches to add are lazy loading from top to bottom when you search and when you navigate to your "nominated" page. I don't think lazy loading is the right word, but basically you want the items to show one after the other, with the transition in opacity taking about 0.2 seconds per item. You could also do a light/dark mode toggle. A potential style option is to have red play curtains on the sides and the main content in the middle between the curtains. Other cool style things to do would be transitions for the banners. Have them come in from the left, stay for a few seconds, and then leave back to the left. Could also add transitions when you nominate movies
+// 7. Some cool style touches to add are lazy loading from top to bottom when you search and when you navigate to your "nominated" page. I don't think lazy loading is the right word, but basically you want the items to show one after the other, with the transition in opacity taking about 0.2 seconds per item. You could also do a light/dark mode toggle. A potential style option is to have red play curtains on the sides and the main content in the middle between the curtains. Other cool style things to do would be transitions for the banners. Have them come in from the left, stay for a few seconds, and then leave back to the left. Could also add transitions when you nominate movies. For the title "The Shoppies" you could make the "S" the Shopify logo
+// For your current button disable, I don't think it will work on page reload, or if you search something else and then search the original name again. Will think later on if it's possible to make it so that the button is always unclickable, even if you reload the page. You might have to change the code to make the IDs more unique so that instead of an id of "button1" it would be "button" + the URL address. That way, each and every button would have a completely unique ID, and you could make it so that if you click on a button, it adds that unique ID to local storage. A function (which will have to fire after the buttons are created on search) will then check the IDs in local storage, and if there's an ID that matches the IDs of one of the buttons created, that button will not be clickable and will have certain styling applied to it. 
 
 
 // TODO: By the end of the day, you want the app to be fully functional. That means being able to nominate (up to 5) movies and un-nominate movies. You also want a page that shows the nominated movies 
@@ -32,10 +33,10 @@
 
 // TODO: For the rest of the night
 // 1. Do basic styling to the list so that the position is fixed in the top right-ish corner of the screen 
-// 2. Make it so that you can only nominate 5 movies and a green banner comes up when you add the fifth and a different red banner comes up if you try to add more than that
-// 3. Disable the button / make it so you can't add another button if the movie has already been nominated. You should do this (if possible) by comparing movie poster URL instead of titles, since each item you look up will have a unique poster, but some may have the same title.
-// 4. Add delete functionality
-// 5. Add local storage functionality
-// 6. Make it so that there's two pages; one home page for searching and saving (which is what you're working on right now) and a page where you're saved movies show up. 
+// TODO: 2. Make it so that you can only nominate 5 movies and a green banner comes up when you add the fifth and a different red banner comes up if you try to add more than that
+// TODO: 3. Disable the button / make it so you can't add another button if the movie has already been nominated. You should do this (if possible) by comparing movie poster URL instead of titles, since each item you look up will have a unique poster, but some may have the same title.
+// TODO: 4. Add delete functionality
+// TODO: 5. Add local storage functionality
+// TODO: 6. Make it so that there's two pages; one home page for searching and saving (which is what you're working on right now) and a page where you're saved movies show up. 
 
 // That's it! If you do that, you've gone above and beyond the technical functionality and met the MVP plus the 6th step. Tomorrow and Saturday you will work on styling and edge cases

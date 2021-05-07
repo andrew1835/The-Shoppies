@@ -1,6 +1,7 @@
 // "http://www.omdbapi.com/?s=" + search + "&apikey=11c4191b"
 
 var searchButton = document.getElementById("searchButton")
+var listArray = new Array()
 
 
 searchButton.onclick = function (event) {
@@ -62,7 +63,7 @@ function populateSearchPage(response) {
 
     var movieData = document.querySelector("#resultsContainer")
     movieData.innerHTML = responseArray.Search.map(function (response) {
-        return " <div class='results'> <img src=" + response.Poster + " class ='moviePoster' alt='No Poster Found'>" + "<h2 class='movieTitle'>" + response.Title + "</h2>" + "<p class='yearReleased'>" + response.Year + "</p> <button class='nominateButton' onclick='trial(event)'>Nominate</button> </div>"
+        return " <div class='results'> <img src=" + response.Poster + " class ='moviePoster' alt='No Poster Found'>" + "<h2 class='movieTitle'>" + response.Title + "</h2>" + "<p class='yearReleased'>" + response.Year + "</p> <button class='nominateButton' onclick='nominateMovie(event)'>Nominate</button> </div>"
     }).join("")
     addIDs()
 
@@ -97,7 +98,8 @@ function addIDs() {
 
 
 // z = 0
-function trial(event) {
+
+function nominateMovie(event) {
     // alert("You nominated me!")
     console.log(event.path[0].id)
     var just = event.path[0].id
@@ -115,13 +117,17 @@ function trial(event) {
     var listLength = document.querySelector("#nominationsList").getElementsByTagName("li").length
 
 
-    // TODO: Eventually you're gonna have to put this inside of a for loop so that you can't add more than 5 items. Also add code so that the add button becomes disabled on movies you've already added, and once you've added your 5th item a banner comes up that says "You've reached your maximum nominations" and another banner pops up when you try to add a 6th item that says "You've already reached the maximum number of movies you can nominate. To nominate another movie, first delete one of the exising movies from your Nominated list"
-
-
     console.log(listLength)
+    console.log(listArray[0])
 
-    if (listLength < 5) {
+
+    if (listLength < 5 && listArray.indexOf(posterID) === -1) {
         list.innerHTML += "<li>" + titleID + " (" + yearID + ")" + "</li>"
+        listArray.push(posterID)
+        console.log(listArray)
+    }
+    else if (listArray.indexOf(posterID) !== -1) {
+        alert("already added")
     }
     else {
         document.getElementById("fiveBanner").style.opacity = "1"
@@ -129,23 +135,12 @@ function trial(event) {
         setInterval(function reduceOpacity() {
             document.getElementById("fiveBanner").style.opacity = "0"
             document.getElementById("fiveBanner").style.zIndex = "-1"
-        }, 3500)
+        }, 2500)
     }
 
+    // At the bottom of this you also want to call another function, which will check to see if the button has been pressed (you can traverse the event to check this, like you did above). Likely the value will be "true". If it's true, then you add styling to the button that makes it unclickable. This is the easy solution, but I don't think it will work on page reload, or if you search something else and then search the original name again. Will think later on if it's possible to make it so that the button is always unclickable, even if you reload the page. You might have to change the code to make the IDs more unique so that instead of an id of "button1" it would be "button" + the URL address. That way, each and every button would have a completely unique ID, and you could make it so that if you click on a button, it adds that unique ID to local storage. A function (which will have to fire after the buttons are created on search) will then check the IDs in local storage, and if there's an ID that matches the IDs of one of the buttons created, that button will not be clickable and will have certain styling applied to it. 
 
-    // event.target.setAttribute("id", z)
-    // console.log(event.target)
-    // TODO: The below line of code shows you how you target the specific element in the array. z could be any number 0-9, and it would give you the corresponding item from the array. It's also what you're doing in the addIDs() function
-    // console.log(document.getElementsByClassName("yearReleased")[z])
-    // z++
-    // console.log(z)
-    // var yearReleased = document.getElementsByClassName("yearReleased")
 
-    // $("div:last").after("<div class=item><p>" + "</p></div>")
-
-    // for (let p = 0; p < 10; p++) {
-    //     yearReleased[p].setAttribute("id", "p" + p)
-    // }
 }
 
 
