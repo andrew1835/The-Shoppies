@@ -79,12 +79,20 @@ function populateSearchPage(response) {
 
 }
 
-for (let j = 0; j < 10; j++) {
-    trail(j);
-}
 
-function trail(j) {
-    console.log(j)
+
+
+function addIDs() {
+    var yearReleased = document.getElementsByClassName("yearReleased")
+    var moviePoster = document.getElementsByClassName("moviePoster")
+    var nominateButton = document.getElementsByClassName("nominateButton")
+    var movieTitle = document.getElementsByClassName("movieTitle")
+    for (let p = 0; p < 10; p++) {
+        yearReleased[p].setAttribute("id", "p" + p);
+        moviePoster[p].setAttribute("id", "img" + p);
+        nominateButton[p].setAttribute("id", "btn" + p);
+        movieTitle[p].setAttribute("id", "title" + p)
+    }
 }
 
 
@@ -103,11 +111,22 @@ function trial(event) {
     console.log(titleID)
     var yearID = document.getElementById("p" + just).innerHTML
     console.log(yearID)
+    var list = document.querySelector("#nominationsList")
+    var listLength = document.querySelector("#nominationsList").getElementsByTagName("li").length
 
 
     // TODO: Eventually you're gonna have to put this inside of a for loop so that you can't add more than 5 items. Also add code so that the add button becomes disabled on movies you've already added, and once you've added your 5th item a banner comes up that says "You've reached your maximum nominations" and another banner pops up when you try to add a 6th item that says "You've already reached the maximum number of movies you can nominate. To nominate another movie, first delete one of the exising movies from your Nominated list"
-    var list = document.querySelector("#nominationsList")
-    list.innerHTML += "<li>" + titleID + "</li>"
+
+
+    console.log(listLength)
+
+    if (listLength < 5) {
+        list.innerHTML += "<li>" + titleID + " (" + yearID + ")" + "</li>"
+    }
+    else {
+        document.getElementById("fiveBanner").style.display = block
+    }
+
 
     // event.target.setAttribute("id", z)
     // console.log(event.target)
@@ -124,16 +143,5 @@ function trial(event) {
     // }
 }
 
-function addIDs() {
-    var yearReleased = document.getElementsByClassName("yearReleased")
-    var moviePoster = document.getElementsByClassName("moviePoster")
-    var nominateButton = document.getElementsByClassName("nominateButton")
-    var movieTitle = document.getElementsByClassName("movieTitle")
-    for (let p = 0; p < 10; p++) {
-        yearReleased[p].setAttribute("id", "p" + p);
-        moviePoster[p].setAttribute("id", "img" + p);
-        nominateButton[p].setAttribute("id", "btn" + p);
-        movieTitle[p].setAttribute("id", "title" + p)
-    }
-}
+
 // With the above function you've shown that you can create a unique id for each element that you create when you map. You would just have to set the id for each class name of each element. See if you can do this when you click the search button, instead of when you click the nominate button. You would have to call this function after you run the map function though, since if you called it before there wouldn't be any elements to add IDs to
