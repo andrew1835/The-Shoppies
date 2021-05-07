@@ -91,6 +91,7 @@ body{
     cursor: pointer;
     font-size: large;
     transition: 0.2s;
+    z-index: 5;
 }
 
 #nom0, #nom1, #nom2, #nom3, #nom4, #nom5, #nom6, #nom7, #nom8, #nom9{
@@ -102,6 +103,8 @@ body{
     bottom: 4.5%;
     left: 0%;
     right: 0%;
+    z-index: 3;
+    pointer-events: none;
 }
 
 #nomTitle{
@@ -118,6 +121,23 @@ body{
     right: 0%;
     left: 0;
     background-color: rgba(69, 207, 69, 0.966);
+    color: white;
+    width: 50%;
+    margin: 0 auto;
+    padding: 3px;
+    border-radius: 0px 0px 8px 8px;
+    transition: 0.5s;
+    opacity: 0;
+    z-index: -1;
+}
+
+#doubleBanner{
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    left: 0;
+    background-color: rgba(204, 58, 39, 0.966);
+    color: white;
     width: 50%;
     margin: 0 auto;
     padding: 3px;

@@ -88,21 +88,27 @@ function nominateMovie(event) {
         list.innerHTML += "<li>" + titleText + " (" + yearText + ")" + "</li> <button class='removeButton' onclick='removeMovie(event)'>Remove</button>"
         listArray.push(posterSource)
         console.log(listArray)
-        buttonChange.disabled = true
         buttonChange.style.opacity = '0'
         buttonChange.style.cursor = 'text'
         nominatedID.style.display = "block"
     }
     else if (listArray.indexOf(posterSource) !== -1) {
-        alert("add a banner when you click the second time")
+        document.getElementById("doubleBanner").style.opacity = "1"
+        document.getElementById("doubleBanner").style.zIndex = "1000"
+        reduceOpacityDoubleBanner()
+        // setInterval(function reduceOpacityDoubleBanner() {
+        //     document.getElementById("doubleBanner").style.opacity = "0"
+        //     document.getElementById("doubleBanner").style.zIndex = "-1"
+        // }, 2500)
     }
     else {
         document.getElementById("fiveBanner").style.opacity = "1"
         document.getElementById("fiveBanner").style.zIndex = "1000"
-        setInterval(function reduceOpacity() {
-            document.getElementById("fiveBanner").style.opacity = "0"
-            document.getElementById("fiveBanner").style.zIndex = "-1"
-        }, 2500)
+        reduceOpacityFiveBanner()
+        // setInterval(function reduceOpacityFiveBanner() {
+        //     document.getElementById("fiveBanner").style.opacity = "0"
+        //     document.getElementById("fiveBanner").style.zIndex = "-1"
+        // }, 2500)
     }
 
 
@@ -110,7 +116,21 @@ function nominateMovie(event) {
 
 }
 
+
+setInterval(function reduceOpacityDoubleBanner() {
+    document.getElementById("doubleBanner").style.opacity = "0"
+    document.getElementById("doubleBanner").style.zIndex = "-1"
+}, 2500)
+
+setInterval(function reduceOpacityFiveBanner() {
+    document.getElementById("fiveBanner").style.opacity = "0"
+    document.getElementById("fiveBanner").style.zIndex = "-1"
+}, 2500)
+
+
+
 function removeMovie(event) {
 
 }
+
 
