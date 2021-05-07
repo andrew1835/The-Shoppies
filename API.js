@@ -85,12 +85,13 @@ function nominateMovie(event) {
 
 
     if (listLength < 5 && listArray.indexOf(posterSource) === -1) {
-        list.innerHTML += "<li>" + titleText + " (" + yearText + ")" + "</li> <button class='removeButton' onclick='removeMovie(event)'>Remove</button>"
+        list.innerHTML += "<li class='nominatedItem'>" + titleText + " (" + yearText + ")" + "</li> <button class='removeButton' onclick='removeMovie(event)'>Remove</button>"
         listArray.push(posterSource)
         console.log(listArray)
         buttonChange.style.opacity = '0'
         buttonChange.style.cursor = 'text'
         nominatedID.style.display = "block"
+        addRemoveID()
     }
     else if (listArray.indexOf(posterSource) !== -1) {
         document.getElementById("doubleBanner").style.opacity = "1"
@@ -125,12 +126,23 @@ setInterval(function reduceOpacityDoubleBanner() {
 setInterval(function reduceOpacityFiveBanner() {
     document.getElementById("fiveBanner").style.opacity = "0"
     document.getElementById("fiveBanner").style.zIndex = "-1"
-}, 2500)
+}, 3000)
 
 
+
+function addRemoveID() {
+    var removeButton = document.getElementsByClassName("removeButton")
+    var nominatedItem = document.getElementsByClassName('nominatedItem')
+    for (let p = 0; p < 5; p++) {
+
+        removeButton[p].setAttribute("id", "removeBtn" + p);
+        nominatedItem[p].setAttribute("id", "li" + p)
+
+    }
+}
 
 function removeMovie(event) {
-
+    console.log(event)
 }
 
 

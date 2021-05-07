@@ -17,6 +17,7 @@
 // If someone searches for something that doesn't exist, there should be a message indicating that. 
 // When you search something, text should be above the first result that says "Results for 'Search Item Name' "
 // One banner should pop up when you add the 5th movie (a green banner) and a different one should pop up when you try to add a 6th movie (red banner)
+// Add a description, especially on the Nominations page. It shouldn't be too hard. When you Nominate a movie, just make another AJAX call, but to the URL with the specific title, and save that description to local storage
 
 
 // TODO: By the end of the day, you want the app to be fully functional. That means being able to nominate (up to 5) movies and un-nominate movies. You also want a page that shows the nominated movies 
