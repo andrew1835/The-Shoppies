@@ -12,7 +12,7 @@
 
 // 6. Once all this is working, you style it. At this point, decide if you want to become a patreon to access the poster API from OMDB
 
-// 7. Some cool style touches to add are lazy loading from top to bottom when you search and when you navigate to your "nominated" page. I don't think lazy loading is the right word, but basically you want the items to show one after the other, with the transition in opacity taking about 0.2 seconds per item. You could also do a light/dark mode toggle. A potential style option is to have red play curtains on the sides and the main content in the middle between the curtains
+// 7. Some cool style touches to add are lazy loading from top to bottom when you search and when you navigate to your "nominated" page. I don't think lazy loading is the right word, but basically you want the items to show one after the other, with the transition in opacity taking about 0.2 seconds per item. You could also do a light/dark mode toggle. A potential style option is to have red play curtains on the sides and the main content in the middle between the curtains. Other cool style things to do would be transitions for the banners. Have them come in from the left, stay for a few seconds, and then leave back to the left. Could also add transitions when you nominate movies
 
 
 // TODO: By the end of the day, you want the app to be fully functional. That means being able to nominate (up to 5) movies and un-nominate movies. You also want a page that shows the nominated movies 

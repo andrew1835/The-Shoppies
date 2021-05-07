@@ -124,7 +124,12 @@ function trial(event) {
         list.innerHTML += "<li>" + titleID + " (" + yearID + ")" + "</li>"
     }
     else {
-        document.getElementById("fiveBanner").style.display = block
+        document.getElementById("fiveBanner").style.opacity = "1"
+        document.getElementById("fiveBanner").style.zIndex = "1000"
+        setInterval(function reduceOpacity() {
+            document.getElementById("fiveBanner").style.opacity = "0"
+            document.getElementById("fiveBanner").style.zIndex = "-1"
+        }, 3500)
     }
 
 
