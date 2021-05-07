@@ -134,7 +134,7 @@ function addRemoveID() {
     var removeButton = document.getElementsByClassName("removeButton")
     var nominatedItem = document.getElementsByClassName('nominatedItem')
     for (let p = 0; p < 5; p++) {
-
+        // getting a console error with this, but that doesn't affect the functionality. The console error occurs because, unless your nomations list is full, there are not 5 items in the array, so when it loops over and tries to find an item that isn't there, it gives an error. Again, that doesn't affect the functionality.
         removeButton[p].setAttribute("id", "removeBtn" + p);
         nominatedItem[p].setAttribute("id", "li" + p)
 
@@ -142,7 +142,19 @@ function addRemoveID() {
 }
 
 function removeMovie(event) {
-    console.log(event)
+    console.log(event.path[0].id)
+    var removeBtnID = event.path[0].id
+    var removeChange = document.getElementById(removeBtnID)
+    console.log(removeChange)
+    removeButtonIDNumber = removeBtnID.substring(9)
+    console.log(removeButtonIDNumber)
+    var removeLi = document.getElementById("li" + removeButtonIDNumber)
+    console.log(removeLi)
+    var ol = document.getElementById("nominationsList")
+    console.log(ol)
+    ol.removeChild(removeLi)
+    removeChange.style.display = "none"
+
 }
 
 
