@@ -67,6 +67,7 @@ body{
     margin-top: 2vh;
     margin-bottom: 2vh;
     padding: 2%;
+    position: relative;
 }
 
 #nominationsDiv{
@@ -89,6 +90,18 @@ body{
     border-radius: 5px;
     cursor: pointer;
     font-size: large;
+    transition: 0.2s;
+}
+
+#nom0, #nom1, #nom2, #nom3, #nom4, #nom5, #nom6, #nom7, #nom8, #nom9{
+    display: none;
+    transition: 1s;
+    margin-bottom: 1vh;
+    padding: 1vh;
+    position: absolute;
+    bottom: 4.5%;
+    left: 0%;
+    right: 0%;
 }
 
 #nomTitle{
