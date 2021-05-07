@@ -27,3 +27,15 @@
 // You may not have to have a unique button id. Basically, you can target specific items wtih a button click since each item is in an array. However, you want to target the item that aligns with the button you clicked (you'll have to set a variable equal to whatever that identifier is, and then target the correct item based off that variable). You're looking through the event of clicking the button right now to see if there is a unique identifier for the button click, but if there's not then you'll have to add a unique id to each one. You were originally trying to do this with a for loop, but maybe you can add a unique id on button click. 
 
 // You're gonna have to traverse the DOM of the element. It'll basically be something like var x = MouseEvent.target.id
+
+
+
+// TODO: For the rest of the night
+// 1. Do basic styling to the list so that the position is fixed in the top right-ish corner of the screen 
+// 2. Make it so that you can only nominate 5 movies and a green banner comes up when you add the fifth and a different red banner comes up if you try to add more than that
+// 3. Disable the button / make it so you can't add another button if the movie has already been nominated. You should do this (if possible) by comparing movie poster URL instead of titles, since each item you look up will have a unique poster, but some may have the same title.
+// 4. Add delete functionality
+// 5. Add local storage functionality
+// 6. Make it so that there's two pages; one home page for searching and saving (which is what you're working on right now) and a page where you're saved movies show up. 
+
+// That's it! If you do that, you've gone above and beyond the technical functionality and met the MVP plus the 6th step. Tomorrow and Saturday you will work on styling and edge cases

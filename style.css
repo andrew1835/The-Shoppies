@@ -28,16 +28,19 @@
 
 #resultsContainer{
     width: 100%;
-    background-color: salmon;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgb(161, 38, 38);
     padding-top: 2vh;
     padding-bottom: 2vh;
     margin-top: 2vh;
+    position: relative;
 }
 
 .results{
     height: fit-content;
     width: 30%;
-    background-color: rgb(109, 109, 109);
+    background-color: rgb(68, 68, 68);
     color: white;
     border-radius: 15px;
     /* margin: 0 auto; */
@@ -47,12 +50,32 @@
     padding: 2%;
 }
 
-.nominateButton{
-    background-color: rgb(12, 201, 12);
+#nominationsDiv{
+    position: fixed;
+    top: 25%;
+    right: 25%;
+    z-index: 10;
+    background-color: rgb(39, 39, 39);
     color: white;
+    padding: 1vw;
+    border-radius: 10px;
+}
+
+.nominateButton{
+    background-color: rgb(250, 207, 15);
+    color: rgb(48, 48, 48);
     height: 6vh;
     width: 6vw;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: large;
+}
+
+#nomTitle{
+    text-decoration: underline;
+}
+
+#nominationsList{
+    
 }

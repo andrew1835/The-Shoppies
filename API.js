@@ -95,7 +95,7 @@ function trial(event) {
     var just = event.path[0].id
     just = just.substring(3)
     console.log(just)
-    var ad = document.querySelector("#nominationsList")
+
 
     var posterID = document.getElementById("img" + just).src
     console.log(posterID)
@@ -104,7 +104,10 @@ function trial(event) {
     var yearID = document.getElementById("p" + just).innerHTML
     console.log(yearID)
 
-    // ad.innerHTML = "<li>" +
+
+    // TODO: Eventually you're gonna have to put this inside of a for loop so that you can't add more than 5 items. Also add code so that the add button becomes disabled on movies you've already added, and once you've added your 5th item a banner comes up that says "You've reached your maximum nominations" and another banner pops up when you try to add a 6th item that says "You've already reached the maximum number of movies you can nominate. To nominate another movie, first delete one of the exising movies from your Nominated list"
+    var list = document.querySelector("#nominationsList")
+    list.innerHTML += "<li>" + titleID + "</li>"
 
     // event.target.setAttribute("id", z)
     // console.log(event.target)
