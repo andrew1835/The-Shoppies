@@ -58,6 +58,8 @@ function populateSearchPage(response) {
 
 
     }
+
+
     var movieData = document.querySelector("#resultsContainer")
     movieData.innerHTML = responseArray.Search.map(function (response) {
         return " <div class='results'> <img src=" + response.Poster + " class ='moviePoster' alt='No Poster Found'>" + "<h2 class='movieTitle'>" + response.Title + "</h2>" + "<p class='yearReleased'>" + response.Year + "</p> <button class='nominateButton' onclick='trial(event)'>Nominate</button> </div>"
@@ -88,7 +90,22 @@ function trail(j) {
 
 // z = 0
 function trial(event) {
-    alert("You nominated me!")
+    // alert("You nominated me!")
+    console.log(event.path[0].id)
+    var just = event.path[0].id
+    just = just.substring(3)
+    console.log(just)
+    var ad = document.querySelector("#nominationsList")
+
+    var posterID = document.getElementById("img" + just).src
+    console.log(posterID)
+    var titleID = document.getElementById("title" + just).innerHTML
+    console.log(titleID)
+    var yearID = document.getElementById("p" + just).innerHTML
+    console.log(yearID)
+
+    // ad.innerHTML = "<li>" +
+
     // event.target.setAttribute("id", z)
     // console.log(event.target)
     // TODO: The below line of code shows you how you target the specific element in the array. z could be any number 0-9, and it would give you the corresponding item from the array. It's also what you're doing in the addIDs() function
