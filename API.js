@@ -146,7 +146,8 @@ setInterval(function reduceOpacityFiveBanner() {
 function addRemoveID() {
     var removeButton = document.getElementsByClassName("removeButton")
     var nominatedItem = document.getElementsByClassName('nominatedItem')
-    removeButton[removeButton.length - 1].setAttribute("id", "removeBtn" + idArray[idArray.length - 1]);
+    removeButton[removeButton.length - 1].setAttribute("id", "removeBtn" + listArray[listArray.length - 1]);
+    removeButton[removeButton.length - 1].classList.add("removeBtn" + idArray[idArray.length - 1]);
     nominatedItem[nominatedItem.length - 1].setAttribute("id", "li" + idArray[idArray.length - 1])
     // for (let p = 0; p < 5; p++) {
     //     // getting a console error with this, but that doesn't affect the functionality. The console error occurs because, unless your nomations list is full, there are not 5 items in the array, so when it loops over and tries to find an item that isn't there, it gives an error. Again, that doesn't affect the functionality.
@@ -158,43 +159,74 @@ function addRemoveID() {
 }
 
 function removeMovie(event) {
-    console.log(event.path[0].id)
+
+
+    // You will have to make it so that it's going off the li id, not the button id anymore since the li id is the image src
+    // The below code is functioning properly to delete the correct title and remove button. Nothing to fix here
+    console.log(event.path[0].className)
+    var removeBtnClass = event.path[0].className
+    var removeClassChange = document.getElementsByClassName(removeBtnClass)
+    removeButtonClassNumber = removeBtnClass.substring(22)
+
     var removeBtnID = event.path[0].id
     var removeChange = document.getElementById(removeBtnID)
     console.log(removeChange)
     removeButtonIDNumber = removeBtnID.substring(9)
     console.log(removeButtonIDNumber)
-    var removeLi = document.getElementById("li" + removeButtonIDNumber)
+    var removeLi = document.getElementById("li" + removeButtonClassNumber)
     console.log(removeLi)
     var ol = document.getElementById("nominationsList")
     console.log(ol)
     ol.removeChild(removeLi)
     removeChange.parentNode.removeChild(removeChange)
-    var buttonID2 = document.getElementById("btn" + idArray[idArray.length - 1])
+
+
+
+
+    const listSplice = listArray.indexOf(removeButtonIDNumber);
+    if (listSplice > -1) {
+        listArray.splice(listSplice, 1);
+    }
+    const idSplice = idArray.indexOf(removeButtonClassNumber);
+    if (idSplice > -1) {
+        idArray.splice(idSplice, 1);
+    }
+
+
+
+    // the splice above may not work. You also don't want buttonID2 to just be set to the last item in the array, because even if you splice it out when you remove, it'll only work if you remove in the reverse order of what you added. If you jump around, the IDs won't match up
+
+
+
+    var buttonID2 = document.getElementById("btn" + removeButtonClassNumber)
     console.log(buttonID2)
 
     // var buttonID2 = document.getElementById("btn" + localStorage.getItem("id" + ))
 
-    //    TODO: FIgure out why it isn't re adding the button to the first card at all right now
-    // right now it doesn't work because the list ID number is a number 0-4 that goes up in order. The cards on the left, on the other hand, have ID numbers that go from 0-9. They can also be added to the nominations list in any order a person wants, so someone could add id 1, then id 6, then id 3, and the list would come up with ids 0,1, and 2. This means that you can't use the list id number to target the corresponding card id. The change you should make to fix this is to make the list id number the same as the id number of whatever card you clicked on. If you do this, i don't think the local storage above is necessary (at least for right now, when you're just trying to only focus on nominate/remove functionality, as opposed to saving)
-    // You don't have to use local storage to populate the list in the moment, only on page reload. It should also push all the photo addresses into the array, so you can't add more than 5 items
 
 
 
-    var nominatedText = document.getElementById("nom" + idArray[idArray.length - 1])
+
+    var nominatedText = document.getElementById("nom" + removeButtonClassNumber)
     // var buttonChange2 = document.getElementById(buttonID2)
     // console.log(buttonChange2)
     buttonID2.style.opacity = '1'
     buttonID2.style.cursor = 'pointer'
     buttonID2.style.zIndex = '5'
     nominatedText.style.display = 'none'
-    listArray.splice(removeButtonIDNumber, 1)
+
 
     // local storage
     localStorage.removeItem("title" + removeButtonIDNumber)
     console.log(idArray[idArray.length - 1])
+    console.log(listArray)
+    console.log(idArray)
 
 }
+
+    // right now it doesn't work because the list ID number is a number 0-4 that goes up in order. The cards on the left, on the other hand, have ID numbers that go from 0-9. They can also be added to the nominations list in any order a person wants, so someone could add id 1, then id 6, then id 3, and the list would come up with ids 0,1, and 2. This means that you can't use the list id number to target the corresponding card id. The change you should make to fix this is to make the list id number the same as the id number of whatever card you clicked on. If you do this, i don't think the local storage above is necessary (at least for right now, when you're just trying to only focus on nominate/remove functionality, as opposed to saving)
+    // You don't have to use local storage to populate the list in the moment, only on page reload. It should also push all the photo addresses into the array, so you can't add more than 5 items
+
 
 
 
