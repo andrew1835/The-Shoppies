@@ -2,6 +2,7 @@
 
 var searchButton = document.getElementById("searchButton")
 var listArray = new Array()
+var idArray = new Array()
 
 
 searchButton.onclick = function (event) {
@@ -68,7 +69,7 @@ function nominateMovie(event) {
     var buttonChange = document.getElementById(buttonID)
     buttonIDNumber = buttonID.substring(3)
     console.log(buttonIDNumber)
-
+    var list = document.querySelector("#nominationsList")
     var posterSource = document.getElementById("img" + buttonIDNumber).src
     console.log(posterSource)
     var titleText = document.getElementById("title" + buttonIDNumber).innerHTML
@@ -76,12 +77,16 @@ function nominateMovie(event) {
     var yearText = document.getElementById("p" + buttonIDNumber).innerHTML
     console.log(yearText)
     var nominatedID = document.getElementById("nom" + buttonIDNumber)
-    var list = document.querySelector("#nominationsList")
     var listLength = document.querySelector("#nominationsList").getElementsByTagName("li").length
 
 
     // local storage
-    localStorage.setItem("title", titleText)
+    if (localStorage.length < 5) {
+        localStorage.setItem("title" + buttonIDNumber, titleText)
+        localStorage.setItem("year" + buttonIDNumber, yearText)
+        localStorage.setItem("id" + buttonIDNumber, buttonIDNumber)
+        console.log(localStorage.getItem("title" + buttonIDNumber))
+    }
 
 
     console.log(listLength)
@@ -90,7 +95,9 @@ function nominateMovie(event) {
 
     if (listLength < 5 && listArray.indexOf(posterSource) === -1) {
         list.innerHTML += "<li class='nominatedItem'>" + titleText + " (" + yearText + ")" + "</li> <button class='removeButton' onclick='removeMovie(event)'>Remove</button>"
+        // list.innerHTML += "<li class='nominatedItem'>" + localStorage.getItem("title" + buttonIDNumber) + " (" + yearText + ")" + "</li> <button class='removeButton' onclick='removeMovie(event)'>Remove</button>"
         listArray.push(posterSource)
+        idArray.push(buttonIDNumber)
         console.log(listArray)
         buttonChange.style.opacity = '0'
         buttonChange.style.cursor = 'text'
@@ -158,17 +165,38 @@ function removeMovie(event) {
     console.log(ol)
     ol.removeChild(removeLi)
     removeChange.parentNode.removeChild(removeChange)
+    var buttonID2 = document.getElementById("btn" + idArray[idArray.length - 1])
+    console.log(buttonID2)
+
+    // var buttonID2 = document.getElementById("btn" + localStorage.getItem("id" + ))
+
+    //    TODO: FIgure out why it isn't re adding the button to the first card at all right now
+    // right now it doesn't work because the list ID number is a number 0-4 that goes up in order. The cards on the left, on the other hand, have ID numbers that go from 0-9. They can also be added to the nominations list in any order a person wants, so someone could add id 1, then id 6, then id 3, and the list would come up with ids 0,1, and 2. This means that you can't use the list id number to target the corresponding card id. The change you should make to fix this is to make the list id number the same as the id number of whatever card you clicked on. If you do this, i don't think the local storage above is necessary (at least for right now, when you're just trying to only focus on nominate/remove functionality, as opposed to saving)
+    // You don't have to use local storage to populate the list in the moment, only on page reload. It should also push all the photo addresses into the array, so you can't add more than 5 items
 
 
-    var buttonID2 = document.getElementById("btn" + removeButtonIDNumber)
+
     var nominatedText = document.getElementById("nom" + removeButtonIDNumber)
     // var buttonChange2 = document.getElementById(buttonID2)
     // console.log(buttonChange2)
     buttonID2.style.opacity = '1'
     buttonID2.style.cursor = 'pointer'
+    buttonID2.style.zIndex = '5'
     nominatedText.style.display = 'none'
     listArray.splice(removeButtonIDNumber, 1)
+
+    // local storage
+    localStorage.removeItem("title" + removeButtonIDNumber)
 
 }
 
 
+
+// For the below function, you essentially want to create the exact same list stuff that you made above, which means you'll have to 
+// window.onload = function showLocalStorage() {
+//     list.innerHTML += "<li class='nominatedItem'>" + localStorage.getItem("title" + buttonIDNumber) + " (" + yearText + ")" + "</li> <button class='removeButton' onclick='removeMovie(event)'>Remove</button>"
+
+
+
+//     addRemoveID()
+// }
