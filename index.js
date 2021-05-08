@@ -38,9 +38,9 @@
 // TODO: For the rest of the night
 // 1. Do basic styling to the list so that the position is fixed in the top right-ish corner of the screen 
 // 2. Make it so that you can only nominate 5 movies and a green banner comes up when you add the fifth and a different red banner comes up if you try to add more than that
-// TODO: 3. Make a banner pop up when you try to add the same movie
+// 3. Make a banner pop up when you try to add the same movie
 // 4. Disable the button / make it so you can't add another button if the movie has already been nominated. You should do this (if possible) by comparing movie poster URL instead of titles, since each item you look up will have a unique poster, but some may have the same title.
-// TODO: 5. Add delete functionality
+// 5. Add delete functionality
 // TODO: 6. Add local storage functionality
 // TODO: 7. Make it so that there's two pages; one home page for searching and saving (which is what you're working on right now) and a page where you're saved movies show up. 
 // TODO: 8. Do the basic styling that you want. This means background image/wallpaper, orientiation of divs, nav bar, etc. The transitions, animations, and edge cases you can deal with on Saturday

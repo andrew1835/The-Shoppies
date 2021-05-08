@@ -80,6 +80,10 @@ function nominateMovie(event) {
     var listLength = document.querySelector("#nominationsList").getElementsByTagName("li").length
 
 
+    // local storage
+    localStorage.setItem("title", titleText)
+
+
     console.log(listLength)
     console.log(listArray[0])
 
@@ -153,7 +157,17 @@ function removeMovie(event) {
     var ol = document.getElementById("nominationsList")
     console.log(ol)
     ol.removeChild(removeLi)
-    removeChange.style.display = "none"
+    removeChange.parentNode.removeChild(removeChange)
+
+
+    var buttonID2 = document.getElementById("btn" + removeButtonIDNumber)
+    var nominatedText = document.getElementById("nom" + removeButtonIDNumber)
+    // var buttonChange2 = document.getElementById(buttonID2)
+    // console.log(buttonChange2)
+    buttonID2.style.opacity = '1'
+    buttonID2.style.cursor = 'pointer'
+    nominatedText.style.display = 'none'
+    listArray.splice(removeButtonIDNumber, 1)
 
 }
 
