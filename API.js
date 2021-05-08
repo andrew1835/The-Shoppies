@@ -98,11 +98,13 @@ function nominateMovie(event) {
         // list.innerHTML += "<li class='nominatedItem'>" + localStorage.getItem("title" + buttonIDNumber) + " (" + yearText + ")" + "</li> <button class='removeButton' onclick='removeMovie(event)'>Remove</button>"
         listArray.push(posterSource)
         idArray.push(buttonIDNumber)
+        console.log(idArray[idArray.length - 1])
         console.log(listArray)
         buttonChange.style.opacity = '0'
         buttonChange.style.cursor = 'text'
         nominatedID.style.display = "block"
         addRemoveID()
+
     }
     else if (listArray.indexOf(posterSource) !== -1) {
         document.getElementById("doubleBanner").style.opacity = "1"
@@ -144,12 +146,15 @@ setInterval(function reduceOpacityFiveBanner() {
 function addRemoveID() {
     var removeButton = document.getElementsByClassName("removeButton")
     var nominatedItem = document.getElementsByClassName('nominatedItem')
-    for (let p = 0; p < 5; p++) {
-        // getting a console error with this, but that doesn't affect the functionality. The console error occurs because, unless your nomations list is full, there are not 5 items in the array, so when it loops over and tries to find an item that isn't there, it gives an error. Again, that doesn't affect the functionality.
-        removeButton[p].setAttribute("id", "removeBtn" + p);
-        nominatedItem[p].setAttribute("id", "li" + p)
+    removeButton[removeButton.length - 1].setAttribute("id", "removeBtn" + idArray[idArray.length - 1]);
+    nominatedItem[nominatedItem.length - 1].setAttribute("id", "li" + idArray[idArray.length - 1])
+    // for (let p = 0; p < 5; p++) {
+    //     // getting a console error with this, but that doesn't affect the functionality. The console error occurs because, unless your nomations list is full, there are not 5 items in the array, so when it loops over and tries to find an item that isn't there, it gives an error. Again, that doesn't affect the functionality.
+    //     // The problem right now is that each time you set an ID, it's re writing the ID for every button, so every button has the same ID. Could use an if statement before the for loop, so that if the ID is blank, run the for loop. I'm sure there's other solutions too that circumvent the need for a for loop
+    //     removeButton[p].setAttribute("id", "removeBtn" + idArray[idArray.length - 1]);
+    //     nominatedItem[p].setAttribute("id", "li" + idArray[idArray.length - 1])
 
-    }
+    // }
 }
 
 function removeMovie(event) {
@@ -187,6 +192,7 @@ function removeMovie(event) {
 
     // local storage
     localStorage.removeItem("title" + removeButtonIDNumber)
+    console.log(idArray[idArray.length - 1])
 
 }
 

@@ -46,3 +46,7 @@
 // TODO: 8. Do the basic styling that you want. This means background image/wallpaper, orientiation of divs, nav bar, etc. The transitions, animations, and edge cases you can deal with on Saturday
 
 // That's it! If you do that, you've gone above and beyond the technical functionality and met the MVP plus the 6th step. Tomorrow and Saturday you will work on styling and edge cases
+
+
+// TODO: Right now, the reason it's not working is because of the way things are going into the array. Unless you add movies in order and delete them in order, the array isn't properly lining up. For example, if you add movies 1, 2, and 3, but then delete movies 3, 1, and 2, it will confuse the array since it's calling on the array in reverse order, instead of calling on it based on the matching id number .It shouldn't be too hard to do. Just splice the array where the id number matches the array number (these should match since the array numbers are supposed to be based off the id numbers)
+// Actually, if you add movies 1, 2 and 3, when you try to delete them in order 3,2,1, it still only adds the button back to the third movie. You can figure this out by console logging the array and seeing how the numbers aren't matching up
