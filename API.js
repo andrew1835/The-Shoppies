@@ -176,7 +176,7 @@ function removeMovie(event) {
 
 
 
-    var nominatedText = document.getElementById("nom" + removeButtonIDNumber)
+    var nominatedText = document.getElementById("nom" + idArray[idArray.length - 1])
     // var buttonChange2 = document.getElementById(buttonID2)
     // console.log(buttonChange2)
     buttonID2.style.opacity = '1'
