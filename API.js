@@ -118,6 +118,7 @@ function nominateMovie(event) {
         buttonChange.style.cursor = 'text'
         nominatedID.style.display = "block"
         addRemoveID()
+        increaseOpacityFourBanner()
         localStorage.setItem("list", list.innerHTML)
 
 
@@ -125,20 +126,20 @@ function nominateMovie(event) {
     else if (listArray.indexOf(posterSource) !== -1) {
         document.getElementById("doubleBanner").style.opacity = "1"
         document.getElementById("doubleBanner").style.zIndex = "1000"
-        reduceOpacityDoubleBanner()
-        // setInterval(function reduceOpacityDoubleBanner() {
-        //     document.getElementById("doubleBanner").style.opacity = "0"
-        //     document.getElementById("doubleBanner").style.zIndex = "-1"
-        // }, 2500)
+        // reduceOpacityDoubleBanner()
+        setTimeout(function reduceOpacityDoubleBanner() {
+            document.getElementById("doubleBanner").style.opacity = "0"
+            document.getElementById("doubleBanner").style.zIndex = "-1"
+        }, 2500)
     }
     else {
         document.getElementById("fiveBanner").style.opacity = "1"
         document.getElementById("fiveBanner").style.zIndex = "1000"
-        reduceOpacityFiveBanner()
-        // setInterval(function reduceOpacityFiveBanner() {
-        //     document.getElementById("fiveBanner").style.opacity = "0"
-        //     document.getElementById("fiveBanner").style.zIndex = "-1"
-        // }, 2500)
+        // reduceOpacityFiveBanner()
+        setTimeout(function reduceOpacityFiveBanner() {
+            document.getElementById("fiveBanner").style.opacity = "0"
+            document.getElementById("fiveBanner").style.zIndex = "-1"
+        }, 3000)
     }
 
 
@@ -146,16 +147,31 @@ function nominateMovie(event) {
 
 }
 
+function increaseOpacityFourBanner() {
+    var listLength2 = document.querySelector("#nominationsList").getElementsByTagName("li").length
+    if (listLength2 === 5) {
+        document.getElementById("fourBanner").style.opacity = "1"
+        document.getElementById("fourBanner").style.zIndex = "1000"
+        setTimeout(function reduceOpacityFourBanner() {
+            document.getElementById("fourBanner").style.opacity = "0"
+            document.getElementById("fourBanner").style.zIndex = "-1"
+        }, 4000)
+    }
 
-setInterval(function reduceOpacityDoubleBanner() {
-    document.getElementById("doubleBanner").style.opacity = "0"
-    document.getElementById("doubleBanner").style.zIndex = "-1"
-}, 2500)
+}
 
-setInterval(function reduceOpacityFiveBanner() {
-    document.getElementById("fiveBanner").style.opacity = "0"
-    document.getElementById("fiveBanner").style.zIndex = "-1"
-}, 3000)
+
+
+
+// setInterval(function reduceOpacityDoubleBanner() {
+//     document.getElementById("doubleBanner").style.opacity = "0"
+//     document.getElementById("doubleBanner").style.zIndex = "-1"
+// }, 2500)
+
+// setInterval(function reduceOpacityFiveBanner() {
+//     document.getElementById("fiveBanner").style.opacity = "0"
+//     document.getElementById("fiveBanner").style.zIndex = "-1"
+// }, 3000)
 
 
 
@@ -164,7 +180,7 @@ function addRemoveID() {
     var nominatedItem = document.getElementsByClassName('nominatedItem')
     removeButton[removeButton.length - 1].setAttribute("id", "removeBtn" + listArray[listArray.length - 1]);
     removeButton[removeButton.length - 1].classList.add("removeBtn" + idArray[idArray.length - 1]);
-    nominatedItem[nominatedItem.length - 1].setAttribute("id", "li" + idArray[idArray.length - 1])
+    nominatedItem[nominatedItem.length - 1].setAttribute("id", "li" + listArray[listArray.length - 1])
 
     console.log(nominatedItem[0].innerHTML.substring(0, nominatedItem[0].innerHTML.length - 7))
     console.log(localStorage.getItem("title" + 0))
@@ -189,11 +205,12 @@ function removeMovie(event) {
     removeButtonClassNumber = removeBtnClass.substring(22)
 
     var removeBtnID = event.path[0].id
+    console.log(event.path[0].id)
     var removeChange = document.getElementById(removeBtnID)
     console.log(removeChange)
     removeButtonIDNumber = removeBtnID.substring(9)
     console.log(removeButtonIDNumber)
-    var removeLi = document.getElementById("li" + removeButtonClassNumber)
+    var removeLi = document.getElementById("li" + removeButtonIDNumber)
     console.log(removeLi)
     var ol = document.getElementById("nominationsList")
     console.log(ol)
