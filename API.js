@@ -117,8 +117,9 @@ function nominateMovie(event) {
         buttonChange.style.opacity = '0'
         buttonChange.style.cursor = 'text'
         nominatedID.style.display = "block"
-        localStorage.setItem("list", list.innerHTML)
         addRemoveID()
+        localStorage.setItem("list", list.innerHTML)
+
 
     }
     else if (listArray.indexOf(posterSource) !== -1) {
@@ -198,6 +199,7 @@ function removeMovie(event) {
     console.log(ol)
     ol.removeChild(removeLi)
     removeChange.parentNode.removeChild(removeChange)
+    localStorage.setItem("list", list.innerHTML)
 
 
 
@@ -236,13 +238,13 @@ function removeMovie(event) {
 
 
     // local storage
-    localStorage.removeItem("title" + removeButtonIDNumber)
-    localStorage.removeItem("year" + removeButtonIDNumber)
-    localStorage.removeItem("id" + removeButtonIDNumber)
-    localStorage.removeItem("poster" + removeButtonIDNumber)
-    console.log(idArray[idArray.length - 1])
-    console.log(listArray)
-    console.log(idArray)
+    // localStorage.removeItem("title" + removeButtonIDNumber)
+    // localStorage.removeItem("year" + removeButtonIDNumber)
+    // localStorage.removeItem("id" + removeButtonIDNumber)
+    // localStorage.removeItem("poster" + removeButtonIDNumber)
+    // console.log(idArray[idArray.length - 1])
+    // console.log(listArray)
+    // console.log(idArray)
 
 }
 
