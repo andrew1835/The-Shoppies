@@ -27,20 +27,53 @@ searchButton.onclick = function (event) {
     }).then(function (response) {
         populateSearchPage(response)
     });
+
+    // if (URL !== "undefined") {
+    //     (function (response) {
+    //         populateSearchPage(response)
+    //     });
+    // }
+    // else {
+    //     alert("no such numa, no such soul")
+    // }
 }
 
 function populateSearchPage(response) {
-
     responseArray = response
-    console.log(responseArray.Search)
-
     var movieData = document.querySelector("#resultsContainer")
-    movieData.innerHTML = responseArray.Search.map(function (event) {
-        return " <div class='results'> <img src=" + event.Poster + " class ='moviePoster' alt='No Poster Found'>" + "<h2 class='movieTitle'>" + event.Title + "</h2>" + "<p class='yearReleased'>" + event.Year + "</p> <button class='nominateButton' onclick='nominateMovie(event)'>Nominate</button> <p class='nominated'>Nominated!</p> </div>"
-    }).join("")
-    addIDs(response)
-    checkButtons(response)
+    if (response.Error !== "Movie not found!") {
+        movieData.innerHTML = responseArray.Search.map(function (event) {
+            return " <div class='results'> <img src=" + event.Poster + " class ='moviePoster' alt='No Poster Found'>" + "<h2 class='movieTitle'>" + event.Title + "</h2>" + "<p class='yearReleased'>" + event.Year + "</p> <button class='nominateButton' onclick='nominateMovie(event)'>Nominate</button> <p class='nominated'>Nominated!</p> </div>"
+        }).join("")
+        addIDs(response)
+        checkButtons(response)
+    }
+    else {
+        increaseOpacityResultsBanner()
+        // No results for search movies titled 
+    }
+    // responseArray = response
+    // console.log(responseArray.Search)
 
+    // var movieData = document.querySelector("#resultsContainer")
+    // movieData.innerHTML = responseArray.Search.map(function (event) {
+    //     return " <div class='results'> <img src=" + event.Poster + " class ='moviePoster' alt='No Poster Found'>" + "<h2 class='movieTitle'>" + event.Title + "</h2>" + "<p class='yearReleased'>" + event.Year + "</p> <button class='nominateButton' onclick='nominateMovie(event)'>Nominate</button> <p class='nominated'>Nominated!</p> </div>"
+    // }).join("")
+    // addIDs(response)
+    // checkButtons(response)
+
+}
+
+function increaseOpacityResultsBanner() {
+    var searchTerm2 = document.getElementById("userSearch").value
+    var noResultsBanner = document.getElementById("noResultsBanner")
+    noResultsBanner.innerHTML = 'No search results found for "' + searchTerm2 + '"'
+    noResultsBanner.style.opacity = "1"
+    noResultsBanner.style.zIndex = "1000"
+    setTimeout(function reduceOpacityResultsBanner() {
+        noResultsBanner.style.opacity = "0"
+        noResultsBanner.style.zIndex = "-1"
+    }, 3000)
 }
 
 
@@ -156,7 +189,7 @@ function nominateMovie(event) {
         setTimeout(function reduceOpacityDoubleBanner() {
             document.getElementById("doubleBanner").style.opacity = "0"
             document.getElementById("doubleBanner").style.zIndex = "-1"
-        }, 2500)
+        }, 3000)
     }
     else {
         document.getElementById("fiveBanner").style.opacity = "1"
