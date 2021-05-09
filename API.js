@@ -53,16 +53,21 @@ function checkButtons(response) {
             console.log(listArray)
         }
     }
+
     console.log(listArray)
-    // for (let v = 0; v < 10; v++) {
-    //     console.log(response.Search[v].Poster)
 
-    //     console.log(nominatedItem2)
-    //     // if (response.Search[v].Poster === -1) {
-    //     //     var nominatedItemID2 = nominatedItem2[v].id.substring(2)
-    //     // }
+    for (let v = 0; v < 10; v++) {
+        console.log(response.Search[v].Poster)
 
-    // }
+        if (listArray.indexOf(response.Search[v].Poster) !== -1) {
+            var disabledButton = document.getElementById("btn" + v)
+            var enabledText = document.getElementById("nom" + v)
+            disabledButton.style.opacity = '0'
+            disabledButton.style.cursor = 'text'
+            enabledText.style.display = "block"
+        }
+
+    }
 }
 
 function addIDs(response) {
