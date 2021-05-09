@@ -18,6 +18,7 @@
 // When you search something, text should be above the first result that says "Results for 'Search Item Name' "
 // One banner should pop up when you add the 5th movie (a green banner) and a different one should pop up when you try to add a 6th movie (red banner)
 // Add a description, especially on the Nominations page. It shouldn't be too hard. When you Nominate a movie, just make another AJAX call, but to the URL with the specific title, and save that description to local storage
+// BIG ONE: Remove functionality doesn't work when you search another item. It's because the first item in the intial search will have an id of 0, and so will the first item in the second search, so you have two remove buttons with the same class number. 
 
 
 // TODO: By the end of the day, you want the app to be fully functional. That means being able to nominate (up to 5) movies and un-nominate movies. You also want a page that shows the nominated movies 
@@ -50,3 +51,5 @@
 
 // TODO: Right now, the reason it's not working is because of the way things are going into the array. Unless you add movies in order and delete them in order, the array isn't properly lining up. For example, if you add movies 1, 2, and 3, but then delete movies 3, 1, and 2, it will confuse the array since it's calling on the array in reverse order, instead of calling on it based on the matching id number .It shouldn't be too hard to do. Just splice the array where the id number matches the array number (these should match since the array numbers are supposed to be based off the id numbers)
 // Actually, if you add movies 1, 2 and 3, when you try to delete them in order 3,2,1, it still only adds the button back to the third movie. You can figure this out by console logging the array and seeing how the numbers aren't matching up
+
+// TODO: Look into if you're pushing into the array from local storage. Right now you can't add more than 5 movies - even if you've already had a few movies in local storage on page load - which is good, but surprising that it's functioning since the 5 movie cap is based on the array length, and you don't remember pushing items from local storage into the array. 
