@@ -181,7 +181,7 @@ function increaseOpacityFourBanner() {
         setTimeout(function reduceOpacityFourBanner() {
             document.getElementById("fourBanner").style.opacity = "0"
             document.getElementById("fourBanner").style.zIndex = "-1"
-        }, 4000)
+        }, 5000)
     }
 
 }
