@@ -37,26 +37,28 @@ function populateSearchPage(response) {
     movieData.innerHTML = responseArray.Search.map(function (event) {
         return " <div class='results'> <img src=" + event.Poster + " class ='moviePoster' alt='No Poster Found'>" + "<h2 class='movieTitle'>" + event.Title + "</h2>" + "<p class='yearReleased'>" + event.Year + "</p> <button class='nominateButton' onclick='nominateMovie(event)'>Nominate</button> <p class='nominated'>Nominated!</p> </div>"
     }).join("")
-    addIDs()
+    addIDs(response)
 
 }
 
 
 
 
-function addIDs() {
+function addIDs(response) {
     var yearReleased = document.getElementsByClassName("yearReleased")
     // console.log(yearReleased)
     var moviePoster = document.getElementsByClassName("moviePoster")
     var nominateButton = document.getElementsByClassName("nominateButton")
     var movieTitle = document.getElementsByClassName("movieTitle")
     var nominated = document.getElementsByClassName("nominated")
+    console.log(response)
 
     for (let p = 0; p < 10; p++) {
 
         yearReleased[p].setAttribute("id", "p" + p);
         moviePoster[p].setAttribute("id", "img" + p);
         nominateButton[p].setAttribute("id", "btn" + p);
+        // nominateButton[p].setAttribute("id", document.getElementById("img" + p).src);
         movieTitle[p].setAttribute("id", "title" + p)
         nominated[p].setAttribute("id", "nom" + p)
 
@@ -85,20 +87,20 @@ function nominateMovie(event) {
 
 
     // local storage
-    if (localStorage.length < 20) {
+    // if (localStorage.length < 20) {
 
-        localStorage.setItem("title" + keyID, titleText)
-        localStorage.setItem("year" + keyID, yearText)
-        localStorage.setItem("id" + keyID, buttonIDNumber)
-        localStorage.setItem("poster" + keyID, posterSource)
-        // console.log(localStorage.map)
-        // console.log(localStorage.getItem("title" + buttonIDNumber))
-        // console.log(localStorage.title0)
-        // console.log(localStorage.year0)
-        // console.log(localStorage.id0)
-        // console.log(localStorage.poster0)
-        keyID++
-    }
+    //     localStorage.setItem("title" + posterSource, titleText)
+    //     localStorage.setItem("year" + posterSource, yearText)
+    //     localStorage.setItem("id" + posterSource, buttonIDNumber)
+    //     localStorage.setItem("poster" + posterSource, posterSource)
+    //     // console.log(localStorage.map)
+    //     // console.log(localStorage.getItem("title" + buttonIDNumber))
+    //     // console.log(localStorage.title0)
+    //     // console.log(localStorage.year0)
+    //     // console.log(localStorage.id0)
+    //     // console.log(localStorage.poster0)
+    //     keyID++
+    // }
 
 
     console.log(listLength)
@@ -115,6 +117,7 @@ function nominateMovie(event) {
         buttonChange.style.opacity = '0'
         buttonChange.style.cursor = 'text'
         nominatedID.style.display = "block"
+        localStorage.setItem("list", list.innerHTML)
         addRemoveID()
 
     }
@@ -233,10 +236,10 @@ function removeMovie(event) {
 
 
     // local storage
-    localStorage.removeItem("title" + removeButtonClassNumber)
-    localStorage.removeItem("year" + removeButtonClassNumber)
-    localStorage.removeItem("id" + removeButtonClassNumber)
-    localStorage.removeItem("poster" + removeButtonClassNumber)
+    localStorage.removeItem("title" + removeButtonIDNumber)
+    localStorage.removeItem("year" + removeButtonIDNumber)
+    localStorage.removeItem("id" + removeButtonIDNumber)
+    localStorage.removeItem("poster" + removeButtonIDNumber)
     console.log(idArray[idArray.length - 1])
     console.log(listArray)
     console.log(idArray)
@@ -287,15 +290,21 @@ function addRemoveIDLS() {
 
 // For the below function, you essentially want to create the exact same list stuff that you made above, which means you'll have to 
 window.onload = function showLocalStorage() {
-    for (let z = 0; z < 10; z++) {
-        if (localStorage.getItem("title" + z) !== null) {
-            list.innerHTML += "<li class='nominatedItem'>" + localStorage.getItem("title" + z) + " (" + localStorage.getItem("year" + z) + ")" + "</li> <button class='removeButton' onclick='removeMovie(event)'>Remove</button>"
-            // The below function call isn't working (currently giving the remove button the class of undefined and the id of undefined) because it's trying to set those items based on the listArray, but on page load the list Array is empty. You have to call a different function, which sets the items based on local storage. You already have the id number in local storage, so you just have to add the poster source
-            addRemoveIDLS()
-        }
+    // for (let z = 0; z < 26; z += 5) {
+    //     if (localStorage.getItem(localStorage.key(z)) !== null) {
+    //         list.innerHTML += "<li class='nominatedItem'>" + localStorage.getItem(localStorage.key(z)) + " (" + localStorage.getItem(localStorage.key(z + 2)) + ")" + "</li> <button class='removeButton' onclick='removeMovie(event)'>Remove</button>"
+    //         // The below function call isn't working (currently giving the remove button the class of undefined and the id of undefined) because it's trying to set those items based on the listArray, but on page load the list Array is empty. You have to call a different function, which sets the items based on local storage. You already have the id number in local storage, so you just have to add the poster source
+    //         addRemoveIDLS()
+    //     }
 
 
-    }
+    // }
+    // console.log(Object.keys(localStorage))
+    // console.log(localStorage.getItem(localStorage.key(0)))
+    // console.log(localStorage.key)
+    // You'll still use the for loop and will set the list text equal to local storage at index z. You'll also do z+5 instead of z++. For the photo, you'll set the text equal to local storage at index z + 2
+
+    list.innerHTML = localStorage.getItem("list")
 }
 
 // list.innerHTML = localStorage.map(function (event) {
