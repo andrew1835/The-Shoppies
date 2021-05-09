@@ -94,9 +94,9 @@ function addIDs(response) {
 
 
 function nominateMovie(event) {
-
-    console.log(event.path[0].id)
-    var buttonID = event.path[0].id
+    console.log(event)
+    console.log(event.target.id)
+    var buttonID = event.target.id
     var buttonChange = document.getElementById(buttonID)
     buttonIDNumber = buttonID.substring(3)
     console.log(buttonIDNumber)
@@ -225,13 +225,13 @@ function removeMovie(event) {
 
     // You will have to make it so that it's going off the li id, not the button id anymore since the li id is the image src
     // The below code is functioning properly to delete the correct title and remove button. Nothing to fix here
-    console.log(event.path[0].className)
-    var removeBtnClass = event.path[0].className
+    console.log(event.target.className)
+    var removeBtnClass = event.target.className
     var removeClassChange = document.getElementsByClassName(removeBtnClass)
     removeButtonClassNumber = removeBtnClass.substring(22)
 
-    var removeBtnID = event.path[0].id
-    console.log(event.path[0].id)
+    var removeBtnID = event.target.id
+    console.log(event.target.id)
     var removeChange = document.getElementById(removeBtnID)
     console.log(removeChange)
     removeButtonIDNumber = removeBtnID.substring(9)
