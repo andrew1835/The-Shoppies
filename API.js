@@ -3,6 +3,7 @@
 var searchButton = document.getElementById("searchButton")
 var listArray = new Array()
 var idArray = new Array()
+var posterArray = new Array()
 var list = document.querySelector("#nominationsList")
 let keyID = 0
 let y = 0
@@ -38,11 +39,31 @@ function populateSearchPage(response) {
         return " <div class='results'> <img src=" + event.Poster + " class ='moviePoster' alt='No Poster Found'>" + "<h2 class='movieTitle'>" + event.Title + "</h2>" + "<p class='yearReleased'>" + event.Year + "</p> <button class='nominateButton' onclick='nominateMovie(event)'>Nominate</button> <p class='nominated'>Nominated!</p> </div>"
     }).join("")
     addIDs(response)
+    checkButtons(response)
 
 }
 
 
+function checkButtons(response) {
+    var nominatedItem2 = document.getElementsByClassName("nominatedItem")
+    for (let u = 0; u < 5; u++) {
+        if (nominatedItem2[u] !== undefined && listArray.indexOf(nominatedItem2[u].id.substring(2)) === -1) {
+            var nominatedItem2ID = nominatedItem2[u].id.substring(2)
+            listArray.push(nominatedItem2ID)
+            console.log(listArray)
+        }
+    }
+    console.log(listArray)
+    // for (let v = 0; v < 10; v++) {
+    //     console.log(response.Search[v].Poster)
 
+    //     console.log(nominatedItem2)
+    //     // if (response.Search[v].Poster === -1) {
+    //     //     var nominatedItemID2 = nominatedItem2[v].id.substring(2)
+    //     // }
+
+    // }
+}
 
 function addIDs(response) {
     var yearReleased = document.getElementsByClassName("yearReleased")
@@ -268,38 +289,38 @@ function removeMovie(event) {
 // right now it doesn't work because the list ID number is a number 0-4 that goes up in order. The cards on the left, on the other hand, have ID numbers that go from 0-9. They can also be added to the nominations list in any order a person wants, so someone could add id 1, then id 6, then id 3, and the list would come up with ids 0,1, and 2. This means that you can't use the list id number to target the corresponding card id. The change you should make to fix this is to make the list id number the same as the id number of whatever card you clicked on. If you do this, i don't think the local storage above is necessary (at least for right now, when you're just trying to only focus on nominate/remove functionality, as opposed to saving)
 // You don't have to use local storage to populate the list in the moment, only on page reload. It should also push all the photo addresses into the array, so you can't add more than 5 items
 
-function addRemoveIDLS() {
-    var removeButton = document.getElementsByClassName("removeButton")
-    var nominatedItem = document.getElementsByClassName('nominatedItem')
+// function addRemoveIDLS() {
+//     var removeButton = document.getElementsByClassName("removeButton")
+//     var nominatedItem = document.getElementsByClassName('nominatedItem')
 
-    // removeButton[removeButton.length - 1].setAttribute("id", "removeBtn" + listArray[listArray.length - 1]);
-    // removeButton[removeButton.length - 1].classList.add("removeBtn" + idArray[idArray.length - 1]);
-    // nominatedItem[nominatedItem.length - 1].setAttribute("id", "li" + idArray[idArray.length - 1])
+//     // removeButton[removeButton.length - 1].setAttribute("id", "removeBtn" + listArray[listArray.length - 1]);
+//     // removeButton[removeButton.length - 1].classList.add("removeBtn" + idArray[idArray.length - 1]);
+//     // nominatedItem[nominatedItem.length - 1].setAttribute("id", "li" + idArray[idArray.length - 1])
 
-    var localStorageVar = localStorage.getItem("id" + y)
-    var localStoragePosterVar = localStorage.getItem("poster" + y)
-    removeButton[y].classList.add("removeBtn" + localStorageVar)
-    removeButton[y].setAttribute("id", "removeBtn" + localStoragePosterVar)
-    nominatedItem[y].setAttribute("id", "li" + localStorageVar)
-    y++
-
-
-    // for (let y = 0; y < 10; y++) {
-    //     if (localStorage.getItem("poster" + y) !== null && localStorage.getItem("id" + y) !== null) {
-    //         // if (nominatedItem[y].innerHTML.substring(0, nominatedItem[0].innerHTML.length - 7) = localStorage.getItem("title" + y)) {
-
-    //         // }
-    //         // set the id at the name of local storage of local storage at "id" + y = to the id of the buttonclass at index of y
-    //         var localStorageVar = localStorage.getItem("id" + y)
-    //         var localStoragePosterVar = localStorage.getItem("poster" + y)
-    //         removeButton[y].classList.add("removeBtn" + localStorageVar)
-    //         removeButton[y].setAttribute("id", "removeBtn" + localStoragePosterVar)
-    //         nominatedItem[y].setAttribute("id", "li" + localStorageVar)
+//     var localStorageVar = localStorage.getItem("id" + y)
+//     var localStoragePosterVar = localStorage.getItem("poster" + y)
+//     removeButton[y].classList.add("removeBtn" + localStorageVar)
+//     removeButton[y].setAttribute("id", "removeBtn" + localStoragePosterVar)
+//     nominatedItem[y].setAttribute("id", "li" + localStorageVar)
+//     y++
 
 
-    //     }
-    // }
-}
+//     // for (let y = 0; y < 10; y++) {
+//     //     if (localStorage.getItem("poster" + y) !== null && localStorage.getItem("id" + y) !== null) {
+//     //         // if (nominatedItem[y].innerHTML.substring(0, nominatedItem[0].innerHTML.length - 7) = localStorage.getItem("title" + y)) {
+
+//     //         // }
+//     //         // set the id at the name of local storage of local storage at "id" + y = to the id of the buttonclass at index of y
+//     //         var localStorageVar = localStorage.getItem("id" + y)
+//     //         var localStoragePosterVar = localStorage.getItem("poster" + y)
+//     //         removeButton[y].classList.add("removeBtn" + localStorageVar)
+//     //         removeButton[y].setAttribute("id", "removeBtn" + localStoragePosterVar)
+//     //         nominatedItem[y].setAttribute("id", "li" + localStorageVar)
+
+
+//     //     }
+//     // }
+// }
 
 // you could just check to see if the list inner html is the same as the key value, and if it is then you set the id and class number
 
@@ -324,6 +345,18 @@ window.onload = function showLocalStorage() {
     // You'll still use the for loop and will set the list text equal to local storage at index z. You'll also do z+5 instead of z++. For the photo, you'll set the text equal to local storage at index z + 2
 
     list.innerHTML = localStorage.getItem("list")
+
+    var nominatedItem = document.getElementsByClassName("nominatedItem")
+
+    for (let x = 0; x < 5; x++) {
+        if (nominatedItem[x] !== undefined) {
+            var nominatedItemID = nominatedItem[x].id.substring(2)
+            // console.log(nominatedItem)
+            // console.log(nominatedItemID)
+            listArray.push(nominatedItemID)
+        }
+
+    }
 }
 
 // list.innerHTML = localStorage.map(function (event) {
