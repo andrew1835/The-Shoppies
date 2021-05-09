@@ -19,7 +19,7 @@ searchButton.onclick = function (event) {
     var searchTerm = document.getElementById("userSearch").value
     console.log("you searched " + '"' + searchTerm + '"')
 
-    var URL = "http://www.omdbapi.com/?s=" + searchTerm + "&apikey=11c4191b&type=movie"
+    var URL = "https://www.omdbapi.com/?s=" + searchTerm + "&apikey=11c4191b&type=movie"
 
     $.ajax({
         url: URL,
