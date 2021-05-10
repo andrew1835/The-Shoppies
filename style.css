@@ -143,7 +143,8 @@ a{
 }
 
 .results{
-    height: fit-content;
+    max-height: inherit;
+    box-sizing: border-box;
     max-width: 28%;
     display: inline-block;
     background-color: rgba(53, 53, 53, 0.575);
@@ -160,7 +161,7 @@ a{
 
 #nominationsDiv{
     position: fixed;
-    top: 20%;
+    top: 17%;
     right: 8%;
     z-index: 10;
     /* background-color: rgb(39, 39, 39); */
@@ -232,7 +233,7 @@ a{
     color: white;
     width: 50%;
     margin: 0 auto;
-    padding: 18px;
+    padding: 26px;
     border-radius: 0px 0px 8px 8px;
     transition: 0.5s;
     opacity: 0;
@@ -250,7 +251,7 @@ a{
     color: white;
     width: 50%;
     margin: 0 auto;
-    padding: 18px;
+    padding: 26px;
     border-radius: 0px 0px 8px 8px;
     transition: 0.5s;
     opacity: 0;
@@ -268,7 +269,7 @@ a{
     color: black;
     width: 50%;
     margin: 0 auto;
-    padding: 3px;
+    padding: 5px;
     border-radius: 0px 0px 8px 8px;
     transition: 0.5s;
     opacity: 0;
@@ -286,11 +287,55 @@ a{
     color: white;
     width: 50%;
     margin: 0 auto;
-    padding: 3px;
+    padding: 5px;
     border-radius: 0px 0px 8px 8px;
     transition: 0.5s;
     opacity: 0;
     z-index: -1;
     border: 1.5px solid rgb(78, 78, 78);
     border-top: none;
+}
+
+@media only screen and (max-width: 768px) {
+    #movieSearchForm{
+     top: 16%;
+     z-index: 5000;
+    }
+
+    #userSearch{
+       width: 70vw;
+    }
+
+    #nominationsDiv{
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        z-index: 10;
+        /* background-color: rgb(39, 39, 39); */
+        color: white;
+        padding: 1vw;
+        width: 30vw;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    #resultsContainer{
+        padding-top: 4vh;
+    }
+
+    #resultsDiv{
+        width: 60%;
+    }
+
+    .results{
+       max-width: none;
+       width: 100%;
+    }
+
+    .moviePoster{
+        max-height: 85vw;
+        max-width: 40vw;
+    }
+
+    
 }
