@@ -40,8 +40,12 @@ searchButton.onclick = function (event) {
 
 function populateSearchPage(response) {
     responseArray = response
-    var movieData = document.querySelector("#resultsContainer")
+    var movieData = document.querySelector("#resultsDiv")
+    var searchedHeading = document.getElementById("youSearchedThis")
+    var searchTerm3 = document.getElementById("userSearch").value
     if (response.Error !== "Movie not found!") {
+        searchedHeading.style.display = "block"
+        searchedHeading.innerHTML = 'Results for "' + searchTerm3 + '"'
         movieData.innerHTML = responseArray.Search.map(function (event) {
             return " <div class='results'> <img src=" + event.Poster + " class ='moviePoster' alt='No Poster Found'>" + "<h2 class='movieTitle'>" + event.Title + "</h2>" + "<p class='yearReleased'>" + event.Year + "</p> <button class='nominateButton' onclick='nominateMovie(event)'>Nominate</button> <p class='nominated'>Nominated!</p> </div>"
         }).join("")

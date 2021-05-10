@@ -7,14 +7,19 @@
 
 
 body{
-    background-color: rgb(46, 46, 46);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
+    background: rgb(238, 238, 238);
+}
+
+a{
+    text-decoration: none;
+    color: black;
 }
 .container{
     text-align: center;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
-    background-color: rgb(230, 230, 230);
+    /* background-color: rgb(230, 230, 230); */
     position: absolute;
     top: 0;
     bottom: 0;
@@ -22,9 +27,78 @@ body{
     left: 0;
 }
 
+#navBar{
+    width: 100%;
+    height: fit-content;
+    display: inline-block;
+    display: flex;
+    border-bottom: 20px solid rgb(235, 195, 16);
+    border-top: 20px solid rgb(250, 207, 15);
+    background-color: rgb(245, 245, 245);
+    align-items: center;
+}
+
 #siteTitle{
     margin-top: 0;
-    padding-top: 2vh;
+    /* padding-top: 1vh; */
+    margin-bottom: 0;
+    /* padding-bottom: 1vh; */
+    margin-left: 5vw;
+    
+    
+    font-family: 'BenchNine', sans-serif;
+    font-size: 50px;
+   
+    margin-bottom: 1vh;
+    display: inline-block;
+}
+
+#shopifySpan{
+    height: 7vh;
+    width: 2vw;
+    display: inline-block;
+    position: relative;
+    margin-right: 23px;
+    /* margin-left: 0.7vw; */
+}
+#shopifyIcon{
+    height: 7vh;
+    left: 0;
+    position: absolute;
+    margin-top: 1vh;
+}
+
+#movieSearchForm{
+    display: inline-block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: fit-content;
+    border-radius: 6px;
+    background-color: black;
+}
+
+#userSearch{
+    padding-top: 6.8px;
+    padding-bottom: 6.3px;
+    padding-left: 7px;
+    width: 25vw;
+    border-radius: 6px 0px 0px 6px;
+    border: 1px solid rgb(112, 112, 112);
+    margin-right: 0;
+}
+
+#searchButton{
+    padding-top: 7px;
+    padding-bottom: 7px;
+    margin-left: 0;
+    border-radius: 0px 6px 6px 0px;
+    border: 1px solid rgb(112, 112, 112);
+    border-left: none;
+    color: white;
+    background-color: black;
+    cursor: pointer;
 }
 
 /* #results{
@@ -49,22 +123,36 @@ body{
     margin: 0 auto;
     min-height: 100vh;
     height: fit-content;
-    background-color: rgb(161, 38, 38);
-    padding-top: 2vh;
+    background: linear-gradient(to left, rgb(40, 40, 40), rgb(119, 0, 0), rgb(196, 16, 16) , rgb(119, 0, 0), rgb(40, 40, 40) );
     padding-bottom: 2vh;
-    margin-top: 2vh;
+    margin-top: 0;
     position: relative;
+}
+
+#youSearchedThis{
+    color: black;
+    display: none;
+    background: linear-gradient(to left, rgb(40, 40, 40), rgb(119, 0, 0), rgb(196, 16, 16) , rgb(119, 0, 0), rgb(40, 40, 40) );
+    margin: 0;
+    padding: 1vw;
+    color: white;
+}
+
+#resultsDiv{
+    width: 75%;
 }
 
 .results{
     height: fit-content;
-    width: fit-content;
-    background-color: rgb(68, 68, 68);
+    max-width: 28%;
+    display: inline-block;
+    background-color: rgba(53, 53, 53, 0.575);
     color: white;
-    border-radius: 15px;
+    border: 1px solid black;
+    border-radius: 8px;
     /* margin: 0 auto; */
     margin-left: 2%;
-    margin-top: 2vh;
+    /* margin-top: 2vh; */
     margin-bottom: 2vh;
     padding: 2%;
     position: relative;
@@ -73,13 +161,32 @@ body{
 #nominationsDiv{
     position: fixed;
     top: 20%;
-    right: 20%;
+    right: 8%;
     z-index: 10;
-    background-color: rgb(39, 39, 39);
+    /* background-color: rgb(39, 39, 39); */
     color: white;
     padding: 1vw;
-    max-width: 20vw;
+    width: 12vw;
     border-radius: 10px;
+}
+
+.removeButton{
+    margin-top: 3px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+    border: 1px solid rgb(85, 85, 85);
+    padding: 3px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.nominatedItem{
+    word-wrap: break-word;
+}
+
+.moviePoster{
+    max-height: 20vw;
+    max-width: 20vw;
 }
 
 .nominateButton{
@@ -125,14 +232,34 @@ body{
     color: white;
     width: 50%;
     margin: 0 auto;
-    padding: 8px;
+    padding: 18px;
     border-radius: 0px 0px 8px 8px;
     transition: 0.5s;
     opacity: 0;
     z-index: -1;
+    border: 1.5px solid rgb(78, 78, 78);
+    border-top: none;
 }
 
 #fourBanner{
+    position: fixed;
+    top: 0%;
+    right: 0%;
+    left: 0;
+    background-color: rgba(30, 163, 30, 0.966);
+    color: white;
+    width: 50%;
+    margin: 0 auto;
+    padding: 18px;
+    border-radius: 0px 0px 8px 8px;
+    transition: 0.5s;
+    opacity: 0;
+    z-index: -1;
+    border: 1.5px solid rgb(78, 78, 78);
+    border-top: none;
+}
+
+#fiveBanner{
     position: fixed;
     top: 0%;
     right: 0%;
@@ -141,27 +268,13 @@ body{
     color: black;
     width: 50%;
     margin: 0 auto;
-    padding: 9px;
-    border-radius: 0px 0px 8px 8px;
-    transition: 0.5s;
-    opacity: 0;
-    z-index: -1;
-}
-
-#fiveBanner{
-    position: fixed;
-    top: 0%;
-    right: 0%;
-    left: 0;
-    background-color: rgba(69, 207, 69, 0.966);
-    color: white;
-    width: 50%;
-    margin: 0 auto;
     padding: 3px;
     border-radius: 0px 0px 8px 8px;
     transition: 0.5s;
     opacity: 0;
     z-index: -1;
+    border: 1.5px solid rgb(78, 78, 78);
+    border-top: none;
 }
 
 #doubleBanner{
@@ -178,4 +291,6 @@ body{
     transition: 0.5s;
     opacity: 0;
     z-index: -1;
+    border: 1.5px solid rgb(78, 78, 78);
+    border-top: none;
 }

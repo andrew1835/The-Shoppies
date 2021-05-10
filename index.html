@@ -6,20 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=BenchNine:wght@300;700&family=Tenor+Sans&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+
     <title>The Shoppies</title>
 </head>
 
 <body>
 
     <div class="container">
-        <h1 id="siteTitle">The Shoppies</h1>
-        <form id="movieSearchForm">
-            <label for="userSearch">Search for a movie</label>
-            <input type="text" id="userSearch">
+        <div id="navBar">
 
-            <!-- This button will trigger our AJAX call -->
-            <input id="searchButton" type="submit" value="Search">
-        </form>
+            <h1 id="siteTitle"><span><a href="index.html">The <span id="shopifySpan"><img
+                                src="https://cdn3.iconfinder.com/data/icons/social-media-2068/64/_shopping-512.png"
+                                alt="shopify icon" id="shopifyIcon"></span>hoppies</a></span></h1>
+
+            <form id="movieSearchForm">
+
+                <input type="text" id="userSearch" placeholder="Search for a movie">
+
+                <!-- This button will trigger our AJAX call -->
+                <input id="searchButton" type="submit" value="Search">
+            </form>
+        </div>
 
         <!-- <div id="results" style="display: none">
             <img src="" alt="movieImage" class="imageResult">
@@ -31,7 +44,12 @@
             <ol id="nominationsList">
             </ol>
         </div>
-        <div id="resultsContainer"></div>
+        <h2 id="youSearchedThis"></h2>
+        <div id="resultsContainer">
+            <div id="resultsDiv">
+
+            </div>
+        </div>
 
 
         <!-- You might be able to check the length of this by doing resultsContainer.length. This will be useful for when you're setting a limit to how many movies you can add -->
