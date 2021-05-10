@@ -304,6 +304,13 @@ a{
 
     #userSearch{
        width: 70vw;
+       padding-top: 15px;
+       padding-bottom: 15px;
+       font-size: large;
+    }
+
+    #searchButton{
+        border: none;
     }
 
     #nominationsDiv{
