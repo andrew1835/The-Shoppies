@@ -337,5 +337,14 @@ a{
         max-width: 40vw;
     }
 
+    #youSearchedThis{
+        color: black;
+        display: none;
+        background: linear-gradient(to left, rgb(40, 40, 40), rgb(119, 0, 0), rgb(196, 16, 16) , rgb(119, 0, 0), rgb(40, 40, 40) );
+        margin: 0;
+        padding: 1vw;
+        color: white;
+        opacity: 0;
+    }
     
 }
