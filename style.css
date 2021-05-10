@@ -32,8 +32,8 @@ a{
     height: fit-content;
     display: inline-block;
     display: flex;
-    border-bottom: 20px solid rgb(235, 195, 16);
-    border-top: 20px solid rgb(250, 207, 15);
+    border-bottom: 8px solid rgb(235, 195, 16);
+    border-top: 8px solid rgb(250, 207, 15);
     background-color: rgb(245, 245, 245);
     align-items: center;
 }
@@ -298,7 +298,7 @@ a{
 
 @media only screen and (max-width: 768px) {
     #movieSearchForm{
-     top: 16%;
+     top: 13%;
      z-index: 5000;
     }
 
@@ -345,6 +345,15 @@ a{
         padding: 1vw;
         color: white;
         opacity: 0;
+    }
+
+    #shopifyIcon{
+        margin-left: 2.5vw;
+    }
+
+    #shopifySpan{
+        margin-right: 55px;
+        /* margin-left: 0.7vw; */
     }
 
     .removeButton{
