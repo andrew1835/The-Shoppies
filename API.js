@@ -56,7 +56,7 @@ function increaseOpacityResultsBanner() {
     var noResultsBanner = document.getElementById("noResultsBanner")
     noResultsBanner.innerHTML = 'No search results found for "' + searchTerm2 + '"'
     noResultsBanner.style.opacity = "1"
-    noResultsBanner.style.zIndex = "1000"
+    noResultsBanner.style.zIndex = "5001"
     setTimeout(function reduceOpacityResultsBanner() {
         noResultsBanner.style.opacity = "0"
         noResultsBanner.style.zIndex = "-1"
@@ -150,7 +150,7 @@ function nominateMovie(event) {
     }
     else if (nominatedItemArray.indexOf(posterSource) !== -1) {
         document.getElementById("doubleBanner").style.opacity = "1"
-        document.getElementById("doubleBanner").style.zIndex = "1000"
+        document.getElementById("doubleBanner").style.zIndex = "5001"
         setTimeout(function reduceOpacityDoubleBanner() {
             document.getElementById("doubleBanner").style.opacity = "0"
             document.getElementById("doubleBanner").style.zIndex = "-1"
@@ -158,7 +158,7 @@ function nominateMovie(event) {
     }
     else {
         document.getElementById("fiveBanner").style.opacity = "1"
-        document.getElementById("fiveBanner").style.zIndex = "1000"
+        document.getElementById("fiveBanner").style.zIndex = "5001"
         setTimeout(function reduceOpacityFiveBanner() {
             document.getElementById("fiveBanner").style.opacity = "0"
             document.getElementById("fiveBanner").style.zIndex = "-1"
@@ -174,7 +174,7 @@ function increaseOpacityFourBanner() {
     var listLength2 = document.querySelector("#nominationsList").getElementsByTagName("li").length
     if (listLength2 === 5) {
         document.getElementById("fourBanner").style.opacity = "1"
-        document.getElementById("fourBanner").style.zIndex = "1000"
+        document.getElementById("fourBanner").style.zIndex = "5001"
         setTimeout(function reduceOpacityFourBanner() {
             document.getElementById("fourBanner").style.opacity = "0"
             document.getElementById("fourBanner").style.zIndex = "-1"
