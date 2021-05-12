@@ -1,5 +1,5 @@
 var searchButton = document.getElementById("searchButton")
-var listArray = new Array()
+var nominatedItemArray = new Array()
 var idArray = new Array()
 var posterArray = new Array()
 var list = document.querySelector("#nominationsList")
@@ -67,19 +67,19 @@ function increaseOpacityResultsBanner() {
 function checkButtons(response) {
     var nominatedItem2 = document.getElementsByClassName("nominatedItem")
     for (let u = 0; u < 5; u++) {
-        if (nominatedItem2[u] !== undefined && listArray.indexOf(nominatedItem2[u].id.substring(2)) === -1) {
+        if (nominatedItem2[u] !== undefined && nominatedItemArray.indexOf(nominatedItem2[u].id.substring(2)) === -1) {
             var nominatedItem2ID = nominatedItem2[u].id.substring(2)
-            listArray.push(nominatedItem2ID)
-            console.log(listArray)
+            nominatedItemArray.push(nominatedItem2ID)
+            console.log(nominatedItemArray)
         }
     }
 
-    console.log(listArray)
+    console.log(nominatedItemArray)
 
     for (let v = 0; v < 10; v++) {
         console.log(response.Search[v].Poster)
 
-        if (listArray.indexOf(response.Search[v].Poster) !== -1) {
+        if (nominatedItemArray.indexOf(response.Search[v].Poster) !== -1) {
             var disabledButton = document.getElementById("btn" + v)
             var enabledText = document.getElementById("nom" + v)
             disabledButton.style.opacity = '0'
@@ -130,15 +130,15 @@ function nominateMovie(event) {
 
 
     console.log(listLength)
-    console.log(listArray[0])
+    console.log(nominatedItemArray[0])
 
 
-    if (listLength < 5 && listArray.indexOf(posterSource) === -1) {
+    if (listLength < 5 && nominatedItemArray.indexOf(posterSource) === -1) {
         list.innerHTML += "<li class='nominatedItem'>" + titleText + " (" + yearText + ")" + "</li> <button class='removeButton' onclick='removeMovie(event)'>Remove</button>"
-        listArray.push(posterSource)
+        nominatedItemArray.push(posterSource)
         idArray.push(buttonIDNumber)
         console.log(idArray)
-        console.log(listArray)
+        console.log(nominatedItemArray)
         buttonChange.style.opacity = '0'
         buttonChange.style.cursor = 'text'
         nominatedID.style.display = "block"
@@ -148,7 +148,7 @@ function nominateMovie(event) {
 
 
     }
-    else if (listArray.indexOf(posterSource) !== -1) {
+    else if (nominatedItemArray.indexOf(posterSource) !== -1) {
         document.getElementById("doubleBanner").style.opacity = "1"
         document.getElementById("doubleBanner").style.zIndex = "1000"
         setTimeout(function reduceOpacityDoubleBanner() {
@@ -187,9 +187,9 @@ function increaseOpacityFourBanner() {
 function addRemoveID() {
     var removeButton = document.getElementsByClassName("removeButton")
     var nominatedItem = document.getElementsByClassName('nominatedItem')
-    removeButton[removeButton.length - 1].setAttribute("id", "removeBtn" + listArray[listArray.length - 1]);
+    removeButton[removeButton.length - 1].setAttribute("id", "removeBtn" + nominatedItemArray[nominatedItemArray.length - 1]);
     removeButton[removeButton.length - 1].classList.add("removeBtn" + idArray[idArray.length - 1]);
-    nominatedItem[nominatedItem.length - 1].setAttribute("id", "li" + listArray[listArray.length - 1])
+    nominatedItem[nominatedItem.length - 1].setAttribute("id", "li" + nominatedItemArray[nominatedItemArray.length - 1])
 
     console.log(nominatedItem[0].innerHTML.substring(0, nominatedItem[0].innerHTML.length - 7))
     console.log(localStorage.getItem("title" + 0))
@@ -219,9 +219,9 @@ function removeMovie(event) {
 
 
 
-    const listSplice = listArray.indexOf(removeButtonIDNumber);
+    const listSplice = nominatedItemArray.indexOf(removeButtonIDNumber);
     if (listSplice > -1) {
-        listArray.splice(listSplice, 1);
+        nominatedItemArray.splice(listSplice, 1);
     }
     const idSplice = idArray.indexOf(removeButtonClassNumber);
     if (idSplice > -1) {
@@ -259,7 +259,7 @@ window.onload = function showLocalStorage() {
     for (let x = 0; x < 5; x++) {
         if (nominatedItem[x] !== undefined) {
             var nominatedItemID = nominatedItem[x].id.substring(2)
-            listArray.push(nominatedItemID)
+            nominatedItemArray.push(nominatedItemID)
         }
 
     }
