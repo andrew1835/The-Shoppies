@@ -21,7 +21,6 @@ a{
 #navBar{
     width: 100%;
     height: fit-content;
-    display: inline-block;
     display: flex;
     border-bottom: 8px solid rgb(235, 195, 16);
     border-top: 8px solid rgb(250, 207, 15);
@@ -35,26 +34,23 @@ a{
     margin-left: 5vw;
     font-family: 'BenchNine', sans-serif;
     font-size: 50px;
-    margin-bottom: 1vh;
-    display: inline-block;
+    
 }
 
 #shoppiesTitle{
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    height: fit-content;
 }
 
-#shopifySpan{
-    height: 65px;
-    width: 2vw;
-    display: inline-block;
-    position: relative;
-    margin-right: 23px;
-}
 #shopifyIcon{
     height: 65px;
-    left: 0;
-    position: absolute;
     margin-top: 1vh;
+    margin-bottom: 2vh;
+    margin-left: 0.7vw;
+    display: flex;
 }
 
 #movieSearchForm{
@@ -324,9 +320,7 @@ a{
         margin-left: 2.5vw;
     }
 
-    #shopifySpan{
-        margin-right: 45px;
-    }
+
 
     .removeButton{
         margin-top: 3px;
